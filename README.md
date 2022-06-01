@@ -2,7 +2,7 @@
 
 This project is a group analysis project that allows the users to create charts and graphs in a way that allows the user to understand and read the data collected from a CSV file using spark.
 
-Technologies Used:
+##Technologies Used:
 
 VSCODE - used to create and develop the code for the project
 
@@ -14,7 +14,7 @@ Spark - Used through VScode to create data into individual CSV files
 
 Scala - Used to format and run spark program
 
-Features:
+##Features:
 
 1- CSV files
 
@@ -24,11 +24,11 @@ Features:
 
 4- spark.sql
 
-TO DO List:
+##TO DO List:
 
 1- We could improve runtime of the application in VScode
 
-Usage:
+##Usage:
 
 1- open your perferred source code editor
 
@@ -38,7 +38,7 @@ Usage:
 
 4- Look into Outputs and open CSV file for data on the question you want
 
-Contributors:
+##Contributors:
 
 Anthony F.
 
