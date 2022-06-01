@@ -8,15 +8,15 @@ import scala.io.Source
 object CSV {
     def main(args:Array[String]): Unit = {
 
-        val file = "outputs/TEAM1outputV1.csv"
+        val file = "TEAM1outputV1.csv"
         val writer = new BufferedWriter(new FileWriter(file, true))
         val random = new Random
 
         val order_id = (1 to 10000).toList 
         val customer_id = (1 to 10000).toSeq
-        val customer_name = Source.fromFile("inputs/customer_names2.csv").getLines.toList 
+        val customer_name = Source.fromFile("customer_names2.csv").getLines.toList 
         val product_id = (1 to 10000).toSeq
-        val product = Source.fromFile("inputs/items.csv").getLines.toList 
+        val product = Source.fromFile("items.csv").getLines.toList 
         val payment_type = List("Debit Card", "Credit Card", "Mobile Payments")
         val qty = (1 to 100).toList
         val price = (1 to 1000).toList
