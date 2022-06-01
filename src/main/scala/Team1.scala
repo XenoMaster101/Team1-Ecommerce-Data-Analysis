@@ -60,7 +60,7 @@ object Team1{
         def traffic_sales(spark:SparkSession): DataFrame ={
             return spark.sql("SELECT Country, City, Count(Product_Id) * sum(QTY) as Sales FROM (select * from market_data where `Payment Success` = 'Y') as M_data GROUP BY Country, City ORDER BY Sales")
         }
-
+        
         //q4a
         def TimeData(spark:SparkSession):DataFrame ={
             val df2=modifiedTime1.toDF
@@ -75,7 +75,20 @@ object Team1{
 
         }
         
+        //q4c
 
+        def TimeData2(spark:SparkSession): DataFrame ={
+            return spark.sql("SELECT Country, Date, sum(QTY) FROM modified_data GROUP BY Country,Date ORDER BY sum(QTY)")
+
+        }
+        
+        //q4d
+
+        def TimeData3(spark:SparkSession): DataFrame ={
+            return spark.sql("SELECT Date, sum(QTY) FROM modified_data GROUP BY Date")
+        }
+        
+        
         //q1
         val q1 = findTopCat(spark).coalesce(1)
         q1.write.mode("overwrite").csv("outputs/q1_csv3")
@@ -84,14 +97,14 @@ object Team1{
         val q1b = findTopCat2(spark).coalesce(1)
         q1b.write.mode("overwrite").csv("outputs/q1b_csv3")
         q1b.limit(10).show()
-        
+    
 
         //q2
         val product_year = prod_year(spark).coalesce(1)
         product_year.write.mode("overwrite").csv("outputs/q2_csv3")
         product_year.show()
-
         
+
         //q3
         val q3 = traffic_sales(spark).coalesce(1)
         q3.write.mode("overwrite").csv("outputs/q3_csv3")
@@ -99,15 +112,27 @@ object Team1{
         
         
         //q4
-        val q4 = TimeData(spark)
-        q4.repartition(1).write.mode("overwrite").csv("outputs/q4_csv3")
-        q4.show()
-
-        //q4b
-        val q4b = TimeData1(spark)
-        q4b.repartition(1).write.mode("overwrite").csv("outputs/q4b_csv3")
+        val q4 = TimeData(spark).coalesce(1)
+        q4.write.mode("overwrite").csv("outputs/q4_csv3")
         q4.show()
         
+        
+        //q4b
+        val q4b = TimeData1(spark).coalesce(1)
+        q4b.write.mode("overwrite").csv("outputs/q4b_csv3")
+        q4b.show()
+        
+        
+        //q4c
+        val q4c = TimeData2(spark).coalesce(1)
+        q4c.write.mode("overwrite").csv("outputs/q4c_csv3")
+        q4c.limit(10).show()
+        
+        //q4d
+        val q4d = TimeData3(spark)
+        q4d.write.mode("overwrite").csv("outputs/q4d_csv3")
+        q4d.limit(10).show()
+
         spark.stop()
 
     }
