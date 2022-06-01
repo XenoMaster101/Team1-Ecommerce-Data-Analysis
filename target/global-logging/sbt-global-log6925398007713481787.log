@@ -1,0 +1,150 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(run, Some(61207b71-4362-4e9f-b057-90ced111243d), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Compile / run[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to C:\Users\Khoa\Desktop\TEAM1\target\scala-2.11\classes ...[0m
+[0m[[0m[31merror[0m] [0m[0morg.apache.spark.sql.AnalysisException: cannot resolve '`date_time`' given input columns: [CountryTable.Country, CatTable.country, CatTable.qty2, CountryTable.qty2, CatTable.product_cat]; line 1 pos 71;[0m
+[0m[[0m[31merror[0m] [0m[0m'Sort ['CatTable.qty2 DESC NULLS LAST], true[0m
+[0m[[0m[31merror[0m] [0m[0m+- 'Project [country#64, product_cat#15, qty2#44L, unresolvedalias('year('date_time), None)][0m
+[0m[[0m[31merror[0m] [0m[0m   +- Join Inner, (qty2#47L = qty2#44L)[0m
+[0m[[0m[31merror[0m] [0m[0m      :- SubqueryAlias CatTable[0m
+[0m[[0m[31merror[0m] [0m[0m      :  +- Aggregate [product_cat#15, country#20], [country#20, product_cat#15, max(QTY#43L) AS qty2#44L][0m
+[0m[[0m[31merror[0m] [0m[0m      :     +- SubqueryAlias T2[0m
+[0m[[0m[31merror[0m] [0m[0m      :        +- Aggregate [country#20, product_cat#15], [country#20, product_cat#15, max(qty#42L) AS QTY#43L][0m
+[0m[[0m[31merror[0m] [0m[0m      :           +- SubqueryAlias T1[0m
+[0m[[0m[31merror[0m] [0m[0m      :              +- Aggregate [country#20, product_cat#15], [country#20, product_cat#15, sum(cast(qty#16 as bigint)) AS qty#42L][0m
+[0m[[0m[31merror[0m] [0m[0m      :                 +- SubqueryAlias T[0m
+[0m[[0m[31merror[0m] [0m[0m      :                    +- Project [country#20, Product_Cat#15, qty#16][0m
+[0m[[0m[31merror[0m] [0m[0m      :                       +- Filter country#20 IN (Cuba,China,Chile)[0m
+[0m[[0m[31merror[0m] [0m[0m      :                          +- SubqueryAlias M_data[0m
+[0m[[0m[31merror[0m] [0m[0m      :                             +- Project [Order-ID#10, Cust-ID#11, CustName#12, Product_Id#13, Product_Name#14, Product_Cat#15, QTY#16, Price#17, Payment_Type#18, Date_Time#19, Country#20, City#21, Website#22, Confirmed Id#23, Payment Success#24, Failure_Message#25][0m
+[0m[[0m[31merror[0m] [0m[0m      :                                +- Filter (Payment Success#24 = Y)[0m
+[0m[[0m[31merror[0m] [0m[0m      :                                   +- SubqueryAlias market_data[0m
+[0m[[0m[31merror[0m] [0m[0m      :                                      +- Relation[Order-ID#10,Cust-ID#11,CustName#12,Product_Id#13,Product_Name#14,Product_Cat#15,QTY#16,Price#17,Payment_Type#18,Date_Time#19,Country#20,City#21,Website#22,Confirmed Id#23,Payment Success#24,Failure_Message#25] csv[0m
+[0m[[0m[31merror[0m] [0m[0m      +- SubqueryAlias CountryTable[0m
+[0m[[0m[31merror[0m] [0m[0m         +- Aggregate [Country#64], [Country#64, max(QTY#46L) AS qty2#47L][0m
+[0m[[0m[31merror[0m] [0m[0m            +- SubqueryAlias T2[0m
+[0m[[0m[31merror[0m] [0m[0m               +- Aggregate [Country#64, Product_Cat#59], [Country#64, Product_Cat#59, max(qty#45L) AS QTY#46L][0m
+[0m[[0m[31merror[0m] [0m[0m                  +- SubqueryAlias T1[0m
+[0m[[0m[31merror[0m] [0m[0m                     +- Aggregate [Country#64, Product_Cat#59], [Country#64, Product_Cat#59, sum(cast(QTY#60 as bigint)) AS qty#45L][0m
+[0m[[0m[31merror[0m] [0m[0m                        +- SubqueryAlias T[0m
+[0m[[0m[31merror[0m] [0m[0m                           +- Project [Country#64, Product_Cat#59, QTY#60][0m
+[0m[[0m[31merror[0m] [0m[0m                              +- Filter Country#64 IN (Cuba,China,Chile)[0m
+[0m[[0m[31merror[0m] [0m[0m                                 +- SubqueryAlias M_data[0m
+[0m[[0m[31merror[0m] [0m[0m                                    +- Project [Order-ID#54, Cust-ID#55, CustName#56, Product_Id#57, Product_Name#58, Product_Cat#59, QTY#60, Price#61, Payment_Type#62, Date_Time#63, Country#64, City#65, Website#66, Confirmed Id#67, Payment Success#68, Failure_Message#69][0m
+[0m[[0m[31merror[0m] [0m[0m                                       +- Filter (Payment Success#68 = Y)[0m
+[0m[[0m[31merror[0m] [0m[0m                                          +- SubqueryAlias market_data[0m
+[0m[[0m[31merror[0m] [0m[0m                                             +- Relation[Order-ID#54,Cust-ID#55,CustName#56,Product_Id#57,Product_Name#58,Product_Cat#59,QTY#60,Price#61,Payment_Type#62,Date_Time#63,Country#64,City#65,Website#66,Confirmed Id#67,Payment Success#68,Failure_Message#69] csv[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.analysis.package$AnalysisErrorAt.failAnalysis(package.scala:42)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1$$anonfun$apply$2.applyOrElse(CheckAnalysis.scala:92)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1$$anonfun$apply$2.applyOrElse(CheckAnalysis.scala:89)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$transformUp$1.apply(TreeNode.scala:289)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$transformUp$1.apply(TreeNode.scala:289)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(TreeNode.scala:70)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode.transformUp(TreeNode.scala:288)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$3.apply(TreeNode.scala:286)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$3.apply(TreeNode.scala:286)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$4$$anonfun$apply$11.apply(TreeNode.scala:335)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableLike$class.map(TraversableLike.scala:234)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.AbstractTraversable.map(Traversable.scala:104)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$4.apply(TreeNode.scala:333)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode.mapProductIterator(TreeNode.scala:187)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode.mapChildren(TreeNode.scala:304)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode.transformUp(TreeNode.scala:286)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$3.apply(TreeNode.scala:286)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$3.apply(TreeNode.scala:286)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$4.apply(TreeNode.scala:306)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode.mapProductIterator(TreeNode.scala:187)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode.mapChildren(TreeNode.scala:304)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode.transformUp(TreeNode.scala:286)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.plans.QueryPlan$$anonfun$transformExpressionsUp$1.apply(QueryPlan.scala:95)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.plans.QueryPlan$$anonfun$transformExpressionsUp$1.apply(QueryPlan.scala:95)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.plans.QueryPlan$$anonfun$1.apply(QueryPlan.scala:107)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.plans.QueryPlan$$anonfun$1.apply(QueryPlan.scala:107)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(TreeNode.scala:70)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.plans.QueryPlan.transformExpression$1(QueryPlan.scala:106)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.plans.QueryPlan.org$apache$spark$sql$catalyst$plans$QueryPlan$$recursiveTransform$1(QueryPlan.scala:118)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.plans.QueryPlan$$anonfun$org$apache$spark$sql$catalyst$plans$QueryPlan$$recursiveTransform$1$1.apply(QueryPlan.scala:122)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.foreach(List.scala:392)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableLike$class.map(TraversableLike.scala:234)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.map(List.scala:296)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.plans.QueryPlan.org$apache$spark$sql$catalyst$plans$QueryPlan$$recursiveTransform$1(QueryPlan.scala:122)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.plans.QueryPlan$$anonfun$2.apply(QueryPlan.scala:127)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode.mapProductIterator(TreeNode.scala:187)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.plans.QueryPlan.mapExpressions(QueryPlan.scala:127)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.plans.QueryPlan.transformExpressionsUp(QueryPlan.scala:95)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1.apply(CheckAnalysis.scala:89)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1.apply(CheckAnalysis.scala:84)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:127)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.foreach(List.scala:392)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:126)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$class.checkAnalysis(CheckAnalysis.scala:84)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.analysis.Analyzer.checkAnalysis(Analyzer.scala:92)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.analysis.Analyzer.executeAndCheck(Analyzer.scala:105)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.execution.QueryExecution.analyzed$lzycompute(QueryExecution.scala:57)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.execution.QueryExecution.analyzed(QueryExecution.scala:55)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:47)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:74)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:642)[0m
+[0m[[0m[31merror[0m] [0m[0m	at Team1$.findTopCat$1(Team1.scala:40)[0m
+[0m[[0m[31merror[0m] [0m[0m	at Team1$.main(Team1.scala:59)[0m
+[0m[[0m[31merror[0m] [0m[0m	at Team1.main(Team1.scala)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.lang.reflect.Method.invoke(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.invokeMain(Run.scala:143)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.execute$1(Run.scala:93)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.$anonfun$runWithLoader$5(Run.scala:120)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run$.executeSuccess(Run.scala:186)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.runWithLoader(Run.scala:120)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Defaults$.$anonfun$bgRunTask$6(Defaults.scala:1983)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Defaults$.$anonfun$termWrapper$2(Defaults.scala:1922)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.util.Try$.apply(Try.scala:213)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.BackgroundThreadPool$BackgroundRunnable.run(DefaultBackgroundJobService.scala:369)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.lang.Thread.run(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrun[0m) org.apache.spark.sql.AnalysisException: cannot resolve '`date_time`' given input columns: [CountryTable.Country, CatTable.country, CatTable.qty2, CountryTable.qty2, CatTable.product_cat]; line 1 pos 71;[0m
+[0m[[0m[31merror[0m] [0m[0m'Sort ['CatTable.qty2 DESC NULLS LAST], true[0m
+[0m[[0m[31merror[0m] [0m[0m+- 'Project [country#64, product_cat#15, qty2#44L, unresolvedalias('year('date_time), None)][0m
+[0m[[0m[31merror[0m] [0m[0m   +- Join Inner, (qty2#47L = qty2#44L)[0m
+[0m[[0m[31merror[0m] [0m[0m      :- SubqueryAlias CatTable[0m
+[0m[[0m[31merror[0m] [0m[0m      :  +- Aggregate [product_cat#15, country#20], [country#20, product_cat#15, max(QTY#43L) AS qty2#44L][0m
+[0m[[0m[31merror[0m] [0m[0m      :     +- SubqueryAlias T2[0m
+[0m[[0m[31merror[0m] [0m[0m      :        +- Aggregate [country#20, product_cat#15], [country#20, product_cat#15, max(qty#42L) AS QTY#43L][0m
+[0m[[0m[31merror[0m] [0m[0m      :           +- SubqueryAlias T1[0m
+[0m[[0m[31merror[0m] [0m[0m      :              +- Aggregate [country#20, product_cat#15], [country#20, product_cat#15, sum(cast(qty#16 as bigint)) AS qty#42L][0m
+[0m[[0m[31merror[0m] [0m[0m      :                 +- SubqueryAlias T[0m
+[0m[[0m[31merror[0m] [0m[0m      :                    +- Project [country#20, Product_Cat#15, qty#16][0m
+[0m[[0m[31merror[0m] [0m[0m      :                       +- Filter country#20 IN (Cuba,China,Chile)[0m
+[0m[[0m[31merror[0m] [0m[0m      :                          +- SubqueryAlias M_data[0m
+[0m[[0m[31merror[0m] [0m[0m      :                             +- Project [Order-ID#10, Cust-ID#11, CustName#12, Product_Id#13, Product_Name#14, Product_Cat#15, QTY#16, Price#17, Payment_Type#18, Date_Time#19, Country#20, City#21, Website#22, Confirmed Id#23, Payment Success#24, Failure_Message#25][0m
+[0m[[0m[31merror[0m] [0m[0m      :                                +- Filter (Payment Success#24 = Y)[0m
+[0m[[0m[31merror[0m] [0m[0m      :                                   +- SubqueryAlias market_data[0m
+[0m[[0m[31merror[0m] [0m[0m      :                                      +- Relation[Order-ID#10,Cust-ID#11,CustName#12,Product_Id#13,Product_Name#14,Product_Cat#15,QTY#16,Price#17,Payment_Type#18,Date_Time#19,Country#20,City#21,Website#22,Confirmed Id#23,Payment Success#24,Failure_Message#25] csv[0m
+[0m[[0m[31merror[0m] [0m[0m      +- SubqueryAlias CountryTable[0m
+[0m[[0m[31merror[0m] [0m[0m         +- Aggregate [Country#64], [Country#64, max(QTY#46L) AS qty2#47L][0m
+[0m[[0m[31merror[0m] [0m[0m            +- SubqueryAlias T2[0m
+[0m[[0m[31merror[0m] [0m[0m               +- Aggregate [Country#64, Product_Cat#59], [Country#64, Product_Cat#59, max(qty#45L) AS QTY#46L][0m
+[0m[[0m[31merror[0m] [0m[0m                  +- SubqueryAlias T1[0m
+[0m[[0m[31merror[0m] [0m[0m                     +- Aggregate [Country#64, Product_Cat#59], [Country#64, Product_Cat#59, sum(cast(QTY#60 as bigint)) AS qty#45L][0m
+[0m[[0m[31merror[0m] [0m[0m                        +- SubqueryAlias T[0m
+[0m[[0m[31merror[0m] [0m[0m                           +- Project [Country#64, Product_Cat#59, QTY#60][0m
+[0m[[0m[31merror[0m] [0m[0m                              +- Filter Country#64 IN (Cuba,China,Chile)[0m
+[0m[[0m[31merror[0m] [0m[0m                                 +- SubqueryAlias M_data[0m
+[0m[[0m[31merror[0m] [0m[0m                                    +- Project [Order-ID#54, Cust-ID#55, CustName#56, Product_Id#57, Product_Name#58, Product_Cat#59, QTY#60, Price#61, Payment_Type#62, Date_Time#63, Country#64, City#65, Website#66, Confirmed Id#67, Payment Success#68, Failure_Message#69][0m
+[0m[[0m[31merror[0m] [0m[0m                                       +- Filter (Payment Success#68 = Y)[0m
+[0m[[0m[31merror[0m] [0m[0m                                          +- SubqueryAlias market_data[0m
+[0m[[0m[31merror[0m] [0m[0m                                             +- Relation[Order-ID#54,Cust-ID#55,CustName#56,Product_Id#57,Product_Name#58,Product_Cat#59,QTY#60,Price#61,Payment_Type#62,Date_Time#63,Country#64,City#65,Website#66,Confirmed Id#67,Payment Success#68,Failure_Message#69] csv[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 7 s, completed May 27, 2022 12:23:18 AM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m
