@@ -48,11 +48,20 @@ object Team1{
         return spark.sql("select product_cat, sum(qty) as qty from (select Product_Cat, qty from ((select * from market_data where `Payment Success` = 'Y') as M_data) as T1 where country = 'Georgia') as T2 group by product_cat order by qty desc")
         
         }
-
         
         //q2
+        def prod_year0(spark:SparkSession): DataFrame ={
+            
+            val maxqty1 = spark.sql("select max(qty) as qty2, year(date_time) as year from market_data group by year order by year")
+            maxqty1.createOrReplaceTempView("maxqty")
+
+            return spark.sql("select * from maxqty")
+        }
+        
+
+        //q2
         def prod_year(spark:SparkSession): DataFrame ={
-            return spark.sql("SELECT Country,Product_Name, Date FROM modified_data GROUP BY Country, Product_Name, Date ORDER BY Date")
+            return spark.sql("SELECT Country,Product_Name, sum(QTY), Date FROM modified_data GROUP BY Product_Name, Date, Country ORDER BY Date")
         }
         
 
@@ -97,14 +106,14 @@ object Team1{
         val q1b = findTopCat2(spark).coalesce(1)
         q1b.write.mode("overwrite").csv("outputs/q1b_csv3")
         q1b.limit(10).show()
-    
-
+        
+        
         //q2
         val product_year = prod_year(spark).coalesce(1)
         product_year.write.mode("overwrite").csv("outputs/q2_csv3")
         product_year.show()
         
-
+        
         //q3
         val q3 = traffic_sales(spark).coalesce(1)
         q3.write.mode("overwrite").csv("outputs/q3_csv3")
@@ -132,7 +141,7 @@ object Team1{
         val q4d = TimeData3(spark)
         q4d.write.mode("overwrite").csv("outputs/q4d_csv3")
         q4d.limit(10).show()
-
+        */
         spark.stop()
 
     }

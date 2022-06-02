@@ -1,0 +1,44 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(run, Some(4ce15649-6318-48d8-9ccf-a900de0ef6fe), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Compile / run[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to C:\Users\Khoa\Desktop\TEAM1\target\scala-2.11\classes ...[0m
+[0m[[0m[31merror[0m] [0m[0morg.apache.spark.sql.catalyst.parser.ParseException: [0m
+[0m[[0m[31merror[0m] [0m[0mmismatched input ')' expecting <EOF>(line 1, pos 86)[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m== SQL ==[0m
+[0m[[0m[31merror[0m] [0m[0mselect CountryTable.country, CatTable.product_name, CatTable.qty2, Cat_Table.date_time) from (select country, product_name, max(QTY) as qty2, year(date_time) from (select country, product_name, max(qty), year(date_time) as QTY from (select country, product_name, sum(qty) as qty, year(date_time) from (select country, product_name, qty, year(date_time) from ((select * from market_data where `Payment Success` = 'Y') as M_data) ) as T group by country, product_name, year(date_time)) as T1 group by country, product_name, year(date_time)) as T2 group by product_name, country, year(date_time)) as CatTable inner join (select country, max(QTY) as qty2 from (select country, product_name, max(qty) as QTY, year(date_time) from (select country, product_name, sum(qty) as qty, year(date_time) from (select country, product_name, qty, year(date_time) from ((select * from market_data where `Payment Success` = 'Y') as M_data) ) as T group by country, product_name, year(date_time)) as T1 group by country, product_name, year(date_time)) as T2 group by country) as CountryTable on CountryTable.qty2 = CatTable.qty2 order by  CatTable.qty2 desc limit 10[0m
+[0m[[0m[31merror[0m] [0m[0m--------------------------------------------------------------------------------------^^^[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.parser.ParseException.withCommand(ParseDriver.scala:239)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.parser.AbstractSqlParser.parse(ParseDriver.scala:115)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.execution.SparkSqlParser.parse(SparkSqlParser.scala:48)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.catalyst.parser.AbstractSqlParser.parsePlan(ParseDriver.scala:69)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:642)[0m
+[0m[[0m[31merror[0m] [0m[0m	at Team1$.prod_year$1(Team1.scala:55)[0m
+[0m[[0m[31merror[0m] [0m[0m	at Team1$.main(Team1.scala:105)[0m
+[0m[[0m[31merror[0m] [0m[0m	at Team1.main(Team1.scala)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.lang.reflect.Method.invoke(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.invokeMain(Run.scala:143)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.execute$1(Run.scala:93)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.$anonfun$runWithLoader$5(Run.scala:120)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run$.executeSuccess(Run.scala:186)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.runWithLoader(Run.scala:120)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Defaults$.$anonfun$bgRunTask$6(Defaults.scala:1983)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Defaults$.$anonfun$termWrapper$2(Defaults.scala:1922)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.util.Try$.apply(Try.scala:213)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.BackgroundThreadPool$BackgroundRunnable.run(DefaultBackgroundJobService.scala:369)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.lang.Thread.run(Unknown Source)[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrun[0m) org.apache.spark.sql.catalyst.parser.ParseException: [0m
+[0m[[0m[31merror[0m] [0m[0mmismatched input ')' expecting <EOF>(line 1, pos 86)[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m== SQL ==[0m
+[0m[[0m[31merror[0m] [0m[0mselect CountryTable.country, CatTable.product_name, CatTable.qty2, Cat_Table.date_time) from (select country, product_name, max(QTY) as qty2, year(date_time) from (select country, product_name, max(qty), year(date_time) as QTY from (select country, product_name, sum(qty) as qty, year(date_time) from (select country, product_name, qty, year(date_time) from ((select * from market_data where `Payment Success` = 'Y') as M_data) ) as T group by country, product_name, year(date_time)) as T1 group by country, product_name, year(date_time)) as T2 group by product_name, country, year(date_time)) as CatTable inner join (select country, max(QTY) as qty2 from (select country, product_name, max(qty) as QTY, year(date_time) from (select country, product_name, sum(qty) as qty, year(date_time) from (select country, product_name, qty, year(date_time) from ((select * from market_data where `Payment Success` = 'Y') as M_data) ) as T group by country, product_name, year(date_time)) as T1 group by country, product_name, year(date_time)) as T2 group by country) as CountryTable on CountryTable.qty2 = CatTable.qty2 order by  CatTable.qty2 desc limit 10[0m
+[0m[[0m[31merror[0m] [0m[0m--------------------------------------------------------------------------------------^^^[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 10 s, completed Jun 1, 2022 3:53:37 PM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m
