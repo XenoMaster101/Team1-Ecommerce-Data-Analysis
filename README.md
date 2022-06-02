@@ -28,6 +28,18 @@ Scala - Used to format and run spark program
 
 1- We could improve runtime of the application in VScode
 
+## Getting Started
+1- JAVA JDK kit 8 or 11 installed on computer
+
+2- Scala program  installed on computer 
+
+3- Spark and Hive installed on computer
+
+4- A video source editor installed to view code on computer 
+
+5- A version of Mircosoft Office installed on computer to view the charts and spreadsheets 
+
+
 ## Usage
 
 1- open your perferred source code editor
